@@ -9,7 +9,10 @@
     "test": "jest --config=./jestconfig.json",
     "test:coverage": "jest --config=./jestconfig.json --watch --watchAll --coverage",
     "test:report": "live-server --port=9000 --host=127.0.0.1 --open=./coverage/lcov-report/",
-    "clean": "sh ./scripts/clean.sh"
+    "clean": "sh ./scripts/clean.sh",
+    "prepare:publish": "sh ./scripts/prepare-publish.sh",
+    "prepare:packages": "node ./scripts/prepare-packages.js",
+    "publish:packages": "node ./scripts/publish-packages.js"
   },
   "repository": {
     "type": "git",
