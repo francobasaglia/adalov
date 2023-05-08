@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-pck",
+    "sourceMap": false,
     "removeComments": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
