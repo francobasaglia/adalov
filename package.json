@@ -1,6 +1,6 @@
 {
   "name": "adalov",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "description": "Node.js &amp; TypeScript framework for building microservices-oriented applications",
   "scripts": {
     "start": "tsc-watch",
