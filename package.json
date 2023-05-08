@@ -1,0 +1,46 @@
+{
+  "name": "adalov",
+  "version": "0.5.12",
+  "description": "Node.js &amp; TypeScript framework for building microservices-oriented applications",
+  "scripts": {
+    "start": "tsc-watch",
+    "build": "tsc --project tsconfig.build.json",
+    "lint": "echo \"No linter defined yet\"",
+    "test": "jest --config=./jestconfig.json",
+    "test:coverage": "jest --config=./jestconfig.json --watch --watchAll --coverage",
+    "test:report": "live-server --port=9000 --host=127.0.0.1 --open=./coverage/lcov-report/",
+    "clean": "sh ./scripts/clean.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francobasaglia/adalov.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "API",
+    "TypeScript",
+    "Rest",
+    "RESTful",
+    "Microservices",
+    "NodeJS framework",
+    "TypeScript framework"
+  ],
+  "author": "Franco Basaglia <francobasaglia94@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/francobasaglia/adalov/issues"
+  },
+  "homepage": "https://github.com/francobasaglia/adalov#readme",
+  "dependencies": {
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "@types/node": "^18.16.3",
+    "jest": "^29.5.0",
+    "live-server": "git+https://github.com/tapio/live-server.git#ad22544",
+    "ts-jest": "^29.1.0",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.0.4"
+  }
+}

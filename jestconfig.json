@@ -1,0 +1,19 @@
+{
+  "transform": {
+    "^.+\\.ts?$": "ts-jest"
+  },
+  "testEnvironment": "node",
+  "testRegex": "/packages/(common|core)?/tests/.*\\.spec\\.(ts|tsx)$",
+  "moduleFileExtensions": [
+    "ts",
+    "js"
+  ],
+  "coverageReporters": [
+    "lcov",
+    "text-summary"
+  ],
+  "collectCoverageFrom": [
+    "packages/**/*.ts",
+    "!packages/**/index.ts"
+  ]
+}

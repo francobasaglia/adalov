@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-pck",
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
+}
