@@ -73,9 +73,11 @@ jobs:
       - name: Prepare packages
         run: yarn prepare:packages
 
-      # Publish packages
+      # Publishing @adalov/common & @adalov/core
       - name: Publish
-        run: npm run publish:packages -- --releaseTag=${{ env.RELEASE_TAG }}
+        run: |
+          cd out-pck/common && npm publish --verbose --access public --tag ${{ env.RELEASE_TAG }}
+          cd out-pck/core && npm publish --verbose --access public --tag ${{ env.RELEASE_TAG }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
         
