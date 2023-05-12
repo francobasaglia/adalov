@@ -4,7 +4,6 @@
 # Outputs
 /coverage
 /out-pck
-/out-tsc
 
 # Dependencies
 **/node_modules
