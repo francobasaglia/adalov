@@ -3,16 +3,15 @@
   "version": "0.5.14",
   "description": "Node.js & TypeScript framework for building microservices-oriented applications",
   "scripts": {
-    "start": "tsc-watch",
+    "start": "tsc-watch --onSuccess \"yarn prepare:packages\"",
     "build": "tsc --project tsconfig.build.json",
     "lint": "echo \"No linter defined yet\"",
     "test": "jest --config=./jestconfig.json",
     "test:coverage": "jest --config=./jestconfig.json --watch --watchAll --coverage",
     "test:report": "live-server --port=9000 --host=127.0.0.1 --open=./coverage/lcov-report/",
     "clean": "sh ./scripts/clean.sh",
-    "prepare:publish": "sh ./scripts/prepare-publish.sh",
-    "prepare:packages": "node ./scripts/prepare-packages.js",
-    "publish:packages": "node ./scripts/publish-packages.js"
+    "prepare:build": "sh ./scripts/prepare-build.sh",
+    "prepare:packages": "node ./scripts/prepare-packages.js"
   },
   "repository": {
     "type": "git",

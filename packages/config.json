@@ -1,11 +1,14 @@
 [
   {
     "name": "@adalov/common",
-    "dir": "common"
+    "dir": "common",
+    "dependencies": {},
+    "peerDependencies": {}
   },
   {
     "name": "@adalov/core",
     "dir": "core",
+    "dependencies": {},
     "peerDependencies": {
       "@adalov/common": ""
     }

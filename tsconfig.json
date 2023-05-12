@@ -12,7 +12,7 @@
     "allowJs": true,
     "declaration": true,
     "sourceMap": true,
-    "outDir": "./out-tsc",
+    "outDir": "./out-pck",
     "removeComments": false,
     "importHelpers": true,
     "esModuleInterop": true,

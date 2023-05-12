@@ -33,7 +33,8 @@ jobs:
 
       # Prepare for publishing.
       - name: Prepare for publishing
-        run: yarn prepare:publish
+        run: |
+          yarn prepare:build --skipClean
 
       # Configure Git user name and email
       - name: Git configuration
@@ -71,7 +72,8 @@ jobs:
 
       # Prepare packages
       - name: Prepare packages
-        run: yarn prepare:packages
+        run: |
+          yarn prepare:packages
 
       # Publishing @adalov/common
       - name: Publish
@@ -89,13 +91,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
 
-        # Publishing @adalov/testing
-      - name: Publish
-        run: |
-          cd out-pck/testing
-          npm publish --verbose --access public --tag ${{ env.RELEASE_TAG }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
+      # Publishing @adalov/testing
+      # - name: Publish
+      #   run: |
+      #     cd out-pck/testing
+      #     npm publish --verbose --access public --tag ${{ env.RELEASE_TAG }}
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
         
       # Push repository changes
       - name: Push changes to repository

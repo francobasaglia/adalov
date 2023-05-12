@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
-const { copyFileSync, writeFile } = require('fs');
-const projectRoot = process.cwd();
-const packagesConfig = require(`${projectRoot}/packages/config.json`);
-const packageRoot = require(`${projectRoot}/package.json`);
+const { copyFileSync, writeFileSync } = require('fs');
 
-const getPeerDependencies = peerDependencies => {
+const getDependencies = (packageRoot, dependencies) => {
     const retval = {};
 
-    if (peerDependencies) {
-        Object.keys(peerDependencies).forEach(key => {
-            if (key.startsWith('@adalov')) {
+    if (dependencies) {
+        Object.keys(dependencies).sort().forEach(key => {
+            const value = dependencies[key];
+
+            /** Siblings projects are released with the same version number */
+            if (key.startsWith('@adalov') && !value) {
                 retval[key] = packageRoot.version;
             } else {
-                retval[key] = peerDependencies[key];
+                retval[key] = value;
             }
         });
     }
@@ -21,38 +21,55 @@ const getPeerDependencies = peerDependencies => {
     return retval;
 };
 
-const preparePackages = () => {
-    packagesConfig.forEach(packageConfig => {
-        ['CHANGELOG.md', 'LICENSE', 'README.md'].forEach(fileName => copyFileSync(
-            `${projectRoot}/${fileName}`,
-            `${projectRoot}/out-pck/${packageConfig.dir}/${fileName}`
-        ));
+const writePackageJson = (projectRoot, packageConfig, packageRoot) => {
+    const dependencies = getDependencies(packageRoot, { tslib: packageRoot.dependencies.tslib, ...packageConfig.dependencies });
+    const peerDependencies = getDependencies(packageRoot, packageConfig.peerDependencies);
+
+    const content = {
+        name: packageConfig.name,
+        version: packageRoot.version,
+        description: packageRoot.description,
+        repository: {
+            ...packageRoot.repository,
+            directory: `packages/${packageConfig.dir}`
+        },
+        keywords: packageRoot.keywords,
+        author: packageRoot.author,
+        license: packageRoot.license,
+        bugs: packageRoot.bugs,
+        homepage: packageRoot.homepage,
+        main: 'index.js'
+    };
+
+    if (Object.keys(dependencies).length) {
+        content.dependencies = dependencies;
+    }
+
+    if (Object.keys(peerDependencies).length) {
+        content.peerDependencies = peerDependencies;
+    }
     
-        writeFile(
-            `${projectRoot}/out-pck/${packageConfig.dir}/package.json`,
-            JSON.stringify({
-                name: packageConfig.name,
-                version: packageRoot.version,
-                description: packageRoot.description,
-                repository: {
-                    ...packageRoot.repository,
-                    directory: `packages/${packageConfig.dir}`
-                },
-                keywords: packageRoot.keywords,
-                author: packageRoot.author,
-                license: packageRoot.license,
-                bugs: packageRoot.bugs,
-                homepage: packageRoot.homepage,
-                main: 'index.js',
-                dependencies: {
-                    tslib: packageRoot.dependencies.tslib,
-                },
-                peerDependencies: {
-                    ...getPeerDependencies(packageConfig.peerDependencies)
-                }
-            }, null, 2),
-            () => {}
-        );
+    writeFileSync(`${projectRoot}/out-pck/${packageConfig.dir}/package.json`, `${JSON.stringify(content, null, 2)}\n`)
+};
+
+const copyFiles = (projectRoot, packageConfig) => {
+    const files = [
+        'CHANGELOG.md',
+        'LICENSE',
+        'README.md'
+    ];
+
+    files.forEach(fileName => copyFileSync(`${projectRoot}/${fileName}`, `${projectRoot}/out-pck/${packageConfig.dir}/${fileName}`));
+};
+
+const preparePackages = () => {
+    const projectRoot = process.cwd();
+    const packagesConfig = require(`${projectRoot}/packages/config.json`);
+    const packageRoot = require(`${projectRoot}/package.json`);
+
+    packagesConfig.forEach(packageConfig => {
+        writePackageJson(projectRoot, packageConfig, packageRoot);
+        copyFiles(projectRoot, packageConfig);
     });
 };
 
