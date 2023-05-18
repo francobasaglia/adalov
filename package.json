@@ -4,6 +4,7 @@
   "description": "Node.js & TypeScript framework for building microservices-oriented applications",
   "scripts": {
     "start": "tsc-watch --onSuccess \"yarn prepare:packages\"",
+    "start:local": "tsc-watch --onSuccess \"yarn update:local\"",
     "build": "tsc --project tsconfig.build.json",
     "lint": "echo \"No linter defined yet\"",
     "test": "jest --config=./jestconfig.json",
@@ -11,7 +12,8 @@
     "test:report": "live-server --port=9000 --host=127.0.0.1 --open=./coverage/lcov-report/",
     "clean": "sh ./scripts/clean.sh",
     "prepare:build": "sh ./scripts/prepare-build.sh",
-    "prepare:packages": "node ./scripts/prepare-packages.js"
+    "prepare:packages": "node ./scripts/prepare-packages.js",
+    "update:local": "yarn prepare:packages && sh ./scripts/update-local.sh -t ../cli"
   },
   "repository": {
     "type": "git",
@@ -33,9 +35,6 @@
     "url": "https://github.com/francobasaglia/adalov/issues"
   },
   "homepage": "https://github.com/francobasaglia/adalov#readme",
-  "dependencies": {
-    "tslib": "^2.5.0"
-  },
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "@types/node": "^18.16.3",
