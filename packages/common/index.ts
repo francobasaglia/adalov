@@ -1,1 +1,2 @@
-export { Logger, Text } from './lib/logger';
+export * from './lib/utilities';
+export * from './lib/logger';
