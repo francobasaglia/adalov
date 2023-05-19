@@ -20,7 +20,7 @@ export class Reflection {
             : Reflect.hasOwnMetadata(metadataKey, target, propertyKey);
     }
 
-    public static getMetadata(metadataKey: MetadataKey, target: MetadataTarget, propertyKey: MetadataPropertyKey = undefined): any[] {
+    public static getMetadata(metadataKey: MetadataKey, target: MetadataTarget, propertyKey: MetadataPropertyKey = undefined): any {
         return (
             typeof propertyKey === 'undefined' 
                 ? Reflect.getMetadata(metadataKey, target)
@@ -28,7 +28,7 @@ export class Reflection {
         ) || [];
     }
 
-    public static getOwnMetadata(metadataKey: MetadataKey, target: MetadataTarget, propertyKey: MetadataPropertyKey = undefined): any[] {
+    public static getOwnMetadata(metadataKey: MetadataKey, target: MetadataTarget, propertyKey: MetadataPropertyKey = undefined): any {
         return (
             typeof propertyKey === 'undefined' 
                 ? Reflect.getOwnMetadata(metadataKey, target)
