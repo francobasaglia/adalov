@@ -2,6 +2,20 @@
 # yarn lockfile v1
 
 
+"@adalov/common@^0.5.14":
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/@adalov/common/-/common-0.5.14.tgz#0bdafe56173c9c4789affef19add392b6263f0c3"
+  integrity sha512-bkLtNdRZlRc3VKi588NnZK/iU7lcwp6zfvT0O/94YTW4HwjLE64tYS+zbXkvKbWkdjz2qtrI67O3W2vaoZxuSQ==
+  dependencies:
+    tslib "^2.5.0"
+
+"@adalov/core@^0.5.14":
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/@adalov/core/-/core-0.5.14.tgz#91fe2f794093798d33aa0924de8f93f1f79a5c4e"
+  integrity sha512-+mTqnt/SHDvafiUNYi2P3KO15O2KMRSaxSc4sRdXPDgc2L4zvzuJGzhzA+XmvtWiUnea7iN+fPKZpBnqtf8Z0A==
+  dependencies:
+    tslib "^2.5.0"
+
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.1.tgz#99e8e11851128b8702cd57c33684f1d0f260b630"
@@ -3239,6 +3253,11 @@ tsc-watch@^6.0.4:
     node-cleanup "^2.1.2"
     ps-tree "^1.2.0"
     string-argv "^0.3.1"
+
+tslib@^2.5.0:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.2.tgz#1b6f07185c881557b0ffa84b111a0106989e8338"
+  integrity sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==
 
 tslib@^2.5.1:
   version "2.5.1"
