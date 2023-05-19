@@ -2,13 +2,18 @@
   {
     "name": "@adalov/common",
     "dir": "common",
-    "dependencies": {},
+    "dependencies": {
+      "tslib": "^2.5.1"
+    },
     "peerDependencies": {}
   },
   {
     "name": "@adalov/core",
     "dir": "core",
-    "dependencies": {},
+    "dependencies": {
+      "reflect-metadata": "^0.1.13",
+      "tslib": "^2.5.1"
+    },
     "peerDependencies": {
       "@adalov/common": ""
     }
