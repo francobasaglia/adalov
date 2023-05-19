@@ -1,4 +1,4 @@
-import { ClassType } from '../../../common';
+import { ClassType } from '@adalov/common';
 
 export type MetadataKey = string;
 
